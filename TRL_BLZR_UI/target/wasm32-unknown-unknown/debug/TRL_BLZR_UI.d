@@ -1,0 +1,1 @@
+/Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/target/wasm32-unknown-unknown/debug/TRL_BLZR_UI.wasm: /Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/src/main.rs

@@ -1,0 +1,9 @@
+/Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/target/wasm32-unknown-unknown/debug/deps/wasm_bindgen_futures-7dc2c7e7dd59f571.rmeta: /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/lib.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/queue.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/task/singlethread.rs
+
+/Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/target/wasm32-unknown-unknown/debug/deps/libwasm_bindgen_futures-7dc2c7e7dd59f571.rlib: /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/lib.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/queue.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/task/singlethread.rs
+
+/Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/target/wasm32-unknown-unknown/debug/deps/wasm_bindgen_futures-7dc2c7e7dd59f571.d: /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/lib.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/queue.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/task/singlethread.rs
+
+/Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/lib.rs:
+/Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/queue.rs:
+/Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.37/src/task/singlethread.rs:

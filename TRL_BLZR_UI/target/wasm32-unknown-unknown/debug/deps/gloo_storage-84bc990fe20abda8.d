@@ -1,0 +1,10 @@
+/Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/target/wasm32-unknown-unknown/debug/deps/gloo_storage-84bc990fe20abda8.rmeta: /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/lib.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/errors.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/local_storage.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/session_storage.rs
+
+/Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/target/wasm32-unknown-unknown/debug/deps/libgloo_storage-84bc990fe20abda8.rlib: /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/lib.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/errors.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/local_storage.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/session_storage.rs
+
+/Users/zevans/Documents/Senior_Capstone/project-TRL_BLZR/TRL_BLZR_UI/target/wasm32-unknown-unknown/debug/deps/gloo_storage-84bc990fe20abda8.d: /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/lib.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/errors.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/local_storage.rs /Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/session_storage.rs
+
+/Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/lib.rs:
+/Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/errors.rs:
+/Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/local_storage.rs:
+/Users/zevans/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-storage-0.3.0/src/session_storage.rs:
