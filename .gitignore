@@ -1,1 +1,6 @@
-venv
+TRL_BLZR_BOUNDARY/lib/
+TRL_BLZR_BOUNDARY/bin/
+TRL_BLZR_BOUNDARY/lib64/
+TRL_BLZR_BOUNDARY/include/
+*lib64
+*.cfg
