@@ -1,6 +1,7 @@
 from dronekit import connect, VehicleMode, LocationGlobalRelative, Command
 from pymavlink import mavutil
-from shapely.geometry import Polygon
+from shapely.geometry import Polygon, Point
+from geopy.distance import distance
 import numpy as np
 
 # Connect to the drone
@@ -8,14 +9,13 @@ vehicle = connect(
     "127.0.0.1:14550", wait_ready=True
 )  # May need to tweak when hardware testing
 
-# Define the polygons
+# Define the polygon
 polygon = []
 with open("boundary_vertices.txt", "r") as f:
     for line in f:
         point = line.split(",")
-        polygon.append(point[1], point[0])
+        polygon.append((float(point[1]), float(point[0])))
     f.close()
-
 
 # Function to create a MAVLink waypoint command
 def create_waypoint(lat, lon, alt):
@@ -35,7 +35,6 @@ def create_waypoint(lat, lon, alt):
         lon,
         alt,
     )
-
 
 # Function to create a survey path
 def create_survey_path(polygon):
@@ -57,7 +56,7 @@ def create_survey_path(polygon):
         0,
         0,
         0,
-        10,
+        9,
     )
     cmds.add(takeoff_cmd)
 
@@ -66,18 +65,18 @@ def create_survey_path(polygon):
 
     # Generate a grid of waypoints within the polygon
     minx, miny, maxx, maxy = shapely_polygon.bounds
-    x_coords = np.arange(minx, maxx, 30 / 111111)  # 30 feet in degrees
-    y_coords = np.arange(miny, maxy, 30 / 111111)  # 30 feet in degrees
+    x_coords = np.arange(minx, maxx, distance((minx, miny), (maxx, miny)).m / 20) #Give 20 slices of area
+    y_coords = np.arange(miny, maxy, distance((minx, miny), (minx, maxy)).m / 20) #Give 20 slices of area
     waypoints = [
         (x, y)
         for x in x_coords
         for y in y_coords
-        if shapely_polygon.contains(Point(x, y))
-    ]
+        if shapely_polygon.contains(Point(x, y)) #Make sure the point is actually inside the polygon
+    ] #Shove points into array to make waypoints
 
     # Waypoint commands
     for waypoint in waypoints:
-        waypoint_cmd = create_waypoint(waypoint[0], waypoint[1], 10)
+        waypoint_cmd = create_waypoint(waypoint[0], waypoint[1], 9)
         cmds.add(waypoint_cmd)
 
     # RTL command
@@ -98,12 +97,14 @@ def create_survey_path(polygon):
         0,
     )
     cmds.add(rtl_cmd)
-
+    
     cmds.upload()
-
-
-# Create a survey path for each polygon
-for polygon in polygons:
+    
+    with open("test_commands.txt", "w") as f:
+        for command in cmds:
+            f.writeline(command)
+        f.close()
+    # Create a survey path for the polygon
     create_survey_path(polygon)
 
     # Switch to AUTO mode and start the mission
@@ -118,3 +119,4 @@ for polygon in polygons:
 
 # Close the connection
 vehicle.close()
+
