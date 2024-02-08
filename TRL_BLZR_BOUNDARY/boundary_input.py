@@ -6,6 +6,7 @@ import shapely
 
 def air_spaces():
     points = pd.read_csv("new_data.csv")
+    points = points.drop_duplicates(subset = ["LATITUDE", "LONGITUDE"])
     points = points.groupby("APT1_NAME")
     return {name: data for name, data in points}
 
@@ -53,13 +54,13 @@ def plot_boundary(polygon, color="red"):
 def main():
     air_spaces_list = air_spaces()
     flight_boundary = poly_gen(
-        #[
-        #    [-101.7512969, 35.2219971],
-        #    [-101.7813, 35.2220],
-        #    [-101.745276, 35.199165],
-        #    [-101.71, 35.13],
-        #]
-        boundary_input()
+        [
+            [-101.9137372711676, 34.9799071416371],
+            [-101.91374530871289, 34.98069082284931],
+            [-101.91527244230875, 34.98077643462814],
+            [-101.91520814194682, 34.979940069570056],
+        ]
+        #boundary_input()
     )
     print(flight_boundary)
     for space_name, space_data in air_spaces_list.items():
@@ -72,8 +73,9 @@ def main():
         space_points = sort_points(space_points)
         space_polygon = shapely.Polygon(space_points)
         if flight_boundary.overlaps(space_polygon):
-            print(f"Overlap detected for air space: {space_name}. Trimming boundary...")
-            flight_boundary = flight_boundary.difference(space_polygon)
+            print(f"Overlap detected for air space: {space_name}. Aborting...")
+            #flight_boundary = flight_boundary.difference(space_polygon)
+            exit()
         with open('boundary_vertices.txt', 'w') as file:
             try:
                 for coord in list(flight_boundary.exterior.coords):
