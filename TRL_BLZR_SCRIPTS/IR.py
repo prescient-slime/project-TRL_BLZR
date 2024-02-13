@@ -11,5 +11,5 @@ camera.start_recording('/home/Desktop/video.h264') #Starts recording of IR camer
 input("Press enter key to stop recording...")      #Wait for user to hit enter 
 
 camera.stop_recording()                            #Once user has hit enter, stop recording
-camera.stop_preview                                #Kill preview window
+camera.stop_preview()                              #Kill preview window
 print("VIDEO HAS BEEN SAVED AS: video.h264")       #Give user name of video created
