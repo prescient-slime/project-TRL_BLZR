@@ -6,7 +6,7 @@ import numpy as np
 
 # Connect to the drone
 vehicle = connect(
-    "127.0.0.1:14550", wait_ready=True
+    "tcp:127.0.0.1:5760", wait_ready=True
 )  # May need to tweak when hardware testing
 
 # Define the polygon
@@ -116,7 +116,11 @@ def create_survey_path(polygon):
         time.sleep(1)
 
     print("Mission complete!")
-
+def main():
+    create_survey_path(polygon)
+    
+if __name__ == "__main__":
+    main()
 # Close the connection
 vehicle.close()
 
