@@ -17,6 +17,7 @@ with open("boundary_vertices.txt", "r") as f:
         polygon.append((float(point[1]), float(point[0])))
     f.close()
 
+
 # Function to create a MAVLink waypoint command
 def create_waypoint(lat, lon, alt):
     return Command(
@@ -36,9 +37,12 @@ def create_waypoint(lat, lon, alt):
         alt,
     )
 
+
 # Function to create a survey path
 def create_survey_path(polygon):
     cmds = vehicle.commands
+    cmds.download()
+    cmds.wait_ready()
     cmds.clear()
 
     # Takeoff command
@@ -65,19 +69,30 @@ def create_survey_path(polygon):
 
     # Generate a grid of waypoints within the polygon
     minx, miny, maxx, maxy = shapely_polygon.bounds
-    x_coords = np.arange(minx, maxx, distance((minx, miny), (maxx, miny)).m / 20) #Give 20 slices of area
-    y_coords = np.arange(miny, maxy, distance((minx, miny), (minx, maxy)).m / 20) #Give 20 slices of area
+    #print(f"minx = {minx}")
+    #print(f"miny = {miny}")
+    #print(f"maxx = {maxx}")
+    #print(f"maxy = {maxy}")
+    x_coords = np.arange(
+        minx, maxx, distance((miny, minx), (miny, maxx)).m / 20
+    )  # Give 20 slices of horizontal distance
+    y_coords = np.arange(
+        miny, maxy, distance((miny, minx), (maxy, minx)).m / 20
+    )  # Give 20 slices of vertical distance
     waypoints = [
         (x, y)
         for x in x_coords
         for y in y_coords
-        if shapely_polygon.contains(Point(x, y)) #Make sure the point is actually inside the polygon
-    ] #Shove points into array to make waypoints
+        if shapely_polygon.contains(
+            Point(x, y)
+        )  # Make sure the point is actually inside the polygon
+    ]  # Shove points into array to make waypoints
 
     # Waypoint commands
     for waypoint in waypoints:
         waypoint_cmd = create_waypoint(waypoint[0], waypoint[1], 9)
         cmds.add(waypoint_cmd)
+        vehicle.flush()
 
     # RTL command
     rtl_cmd = Command(
@@ -97,15 +112,16 @@ def create_survey_path(polygon):
         0,
     )
     cmds.add(rtl_cmd)
-    
+
     cmds.upload()
     
-    with open("test_commands.txt", "w") as f:
+    print(f"Command: {vehicle.commands.next}")
+    with open("test_commands.txt", "a") as f:
         for command in cmds:
-            f.writeline(command)
+            f.write(str(command))
         f.close()
     # Create a survey path for the polygon
-    create_survey_path(polygon)
+    #create_survey_path(polygon)
 
     # Switch to AUTO mode and start the mission
     vehicle.mode = VehicleMode("AUTO")
@@ -116,11 +132,13 @@ def create_survey_path(polygon):
         time.sleep(1)
 
     print("Mission complete!")
+
+
 def main():
     create_survey_path(polygon)
-    
+
+
 if __name__ == "__main__":
     main()
 # Close the connection
 vehicle.close()
-

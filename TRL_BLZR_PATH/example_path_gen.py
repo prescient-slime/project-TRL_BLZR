@@ -12,6 +12,7 @@ with open("boundary_vertices.txt", "r") as f:
         polygon.append((float(point[1]), float(point[0])))
     f.close()
 
+
 # Function to create a MAVLink waypoint command
 def create_waypoint(lat, lon, alt):
     return Command(
@@ -30,6 +31,7 @@ def create_waypoint(lat, lon, alt):
         lon,
         alt,
     )
+
 
 # Function to create a survey path
 def create_survey_path(polygon):
