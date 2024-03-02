@@ -1,0 +1,5 @@
+aiogrpc
+asyncio
+grpcio
+mavsdk
+protobuf
