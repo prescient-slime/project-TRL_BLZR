@@ -9,7 +9,7 @@ print("Imports Successful")
 
 async def run():
     drone = System()
-    await drone.connect(system_address="serial:///dev/ttyAMA0")
+    await drone.connect(system_address="serial:///dev/ttyAMA0:57600")
 
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
