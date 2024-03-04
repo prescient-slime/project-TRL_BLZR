@@ -4,3 +4,5 @@
 */include/
 *lib64
 *.cfg
+TRL_BLZR_PATH/share/
+TRL_BLZR_PATH/Drone/
