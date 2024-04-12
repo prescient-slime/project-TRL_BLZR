@@ -1,6 +1,7 @@
 
 import cv2
 import os
+import math
 
 def extract_frames(video_path, output_dir):
     # Create output directory if not exists
@@ -11,7 +12,7 @@ def extract_frames(video_path, output_dir):
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     # Calculate interval
-    interval = total_frames // 500
+    interval = math.ceil(total_frames / 500)
     frame_count = 0
 
     while cap.isOpened():
@@ -24,6 +25,10 @@ def extract_frames(video_path, output_dir):
         if frame_count % interval == 0:
             frame_name = f"frame_{frame_count:04d}.jpg"
             cv2.imwrite(os.path.join(output_dir, frame_name), frame)
+            saved_frames += 1
+
+        if saved_frames >= 500:
+            break
 
         frame_count += 1
 
