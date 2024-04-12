@@ -1,4 +1,3 @@
-
 import cv2
 import os
 import math
@@ -24,8 +23,8 @@ def extract_frames(video_path, output_dir):
 
         # Check if it's time to save a frame
         if frame_count % interval == 0:
-            frame_name = f"frame_{frame_count:04d}.jpg"
-            cv2.imwrite(os.path.join(output_dir, frame_name), frame)
+            frame_path = os.path.join(output_dir, f"frame_{saved_frames}.jpg")
+            cv2.imwrite(frame_path, frame)
             saved_frames += 1
 
         if saved_frames >= 500:
