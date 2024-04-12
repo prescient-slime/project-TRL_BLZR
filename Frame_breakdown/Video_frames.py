@@ -14,6 +14,7 @@ def extract_frames(video_path, output_dir):
     # Calculate interval
     interval = math.ceil(total_frames / 500)
     frame_count = 0
+    saved_frames = 0
 
     while cap.isOpened():
         ret, frame = cap.read()
